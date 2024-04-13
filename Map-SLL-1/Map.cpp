@@ -28,7 +28,7 @@ TValue Map::add(TKey c, TValue v){
 
 		while (current != nullptr) {
 			if (current->elem.first == c) {
-				TValue oldValue = current->elem.second;
+				TValue oldValue = current->elem.second;  // why is it right keep old value to return ? - fixed issue with assert s2 = 19, was s2 = 119 
 				current->elem.second = v;
 				delete newNode;
 				return oldValue;
@@ -37,7 +37,7 @@ TValue Map::add(TKey c, TValue v){
 		}
 
 		current = head;
-		while (current->next != nullptr) { 
+		while (current->next != nullptr) {   // warning here, not sure why
 			current = current->next;
 		}
 		current->next = newNode;
@@ -65,7 +65,7 @@ TValue Map::search(TKey c) const{
 TValue Map::remove(TKey c) {
 	//TODO - Implementation
 	Node* current = head;
-	Node* previous = nullptr;
+	Node* previous = nullptr; // is it still a SLL if I do this :) ?
 
 	// Find node with key c
 	while (current != nullptr && current->elem.first != c) {
@@ -86,22 +86,17 @@ TValue Map::remove(TKey c) {
 		previous->next = current->next;
 	}
 
-	// Store value to return
-	TValue removedValue = current->elem.second;
-
-	// Delete node and adjust size
+	TValue removedValue = current->elem.second; // not sure why second
 	delete current;
 	this->sizeMap--;
 
-	// Return value associated with removed key
 	return removedValue;
 
 }
 
-
 int Map::size() const {
 	//TODO - Implementation
-	return this->sizeMap;
+	return this->sizeMap; // confused about syntax with "this->" or without
 }
 
 bool Map::isEmpty() const{
@@ -112,6 +107,3 @@ bool Map::isEmpty() const{
 MapIterator Map::iterator() const {
 	return MapIterator(*this);
 }
-
-
-

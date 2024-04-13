@@ -23,7 +23,7 @@ void MapIterator::next() {
 		throw exception();
 	}
 	if (currentPosition != nullptr) {
-		currentPosition = currentPosition->next;
+		currentPosition = currentPosition->next; 
 	}
 }
 
@@ -43,4 +43,5 @@ bool MapIterator::valid() const {
 }
 
 
-
+// confused about syntax with "this->" or without
+// still need to understand more on iterator role

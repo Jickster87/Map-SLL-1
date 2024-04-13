@@ -32,12 +32,12 @@ void testAll() { //call each function to see if it is implemented
 		s1 += e.first;
 		s2 += e.second;
 
-		std::cout << "Current sums: s1 = " << s1 << ", s2 = " << s2 << std::endl;
+		std::cout << "Current sums: s1 = " << s1 << ", s2 = " << s2 << std::endl; // needed for debug
 
 		id.next();
 	}
 	assert(s1 == 19);
-	assert(s2 == 19); //this is not 19 for some reason it's 119 ??? , add function not changing 2nd add from 110 to 10
+	assert(s2 == 19); // - fixed! - error here this is not 19 for some reason it's 119 ??? , add function not changing 2nd add from 110 to 10 
 
 }
 
